@@ -1,0 +1,70 @@
+<!-- <div style="display: flex; justify-content: center;">
+  <form [formGroup]="userRegisterForm">
+    <label for="fname">First name:</label><br>
+    <input #name type="text" id="fname" name="fname" formControlName="name"><br>
+    @if (userRegisterForm.controls.name.touched) {
+    @if (userRegisterForm.controls['name'].errors) {
+    <h1 style="color: rebeccapurple;">Error</h1>
+    }@if ((userRegisterForm.controls.name.value && userRegisterForm.controls.name.value.length < 3) ||
+      !userRegisterForm.controls.name.value) { <h1 style="color: rebeccapurple;">Length is not valid</h1>
+      }
+      }
+
+
+
+      <label for="lname">Last name:</label><br>
+      <input type="text" id="lname" name="lname" formControlName="lastName"><br><br>
+      <div formArrayName="permissionsList">
+
+        @for (item of permisions.controls; track item; let i = $index ) {
+        <div [formGroup]="getFormGroup(i)">
+          <input formControlName="id" placeholder="Enter ID" />
+          <br>
+          <br>
+          <input formControlName="perName" placeholder="Enter PermissionName" />
+        </div>
+        <input [formControlName]="i" placeholder="Enter value" />
+        <button type="button">Remove</button>
+        }
+      </div>
+      <input (click)="addEmailField(name.value)" type="button" value="AddNewTodo">
+      <!-- [disabled]="!userRegisterForm.valid" -->
+      <!-- <button (click)="show()">
+        showForm
+      </button>
+
+
+  </form>
+  <button (click)="clearFormArray()">clear form</button>
+</div>
+
+<h1>Hello my name is {{MyService.showName()}}</h1> --> 
+
+
+
+
+<div class="todo-app">
+  <h1>To-Do List</h1>
+
+  <div class="add-task">
+    <input #task type="text" placeholder="Add a new task" />
+    <button (click)="addTask(task.value)">Add Task</button>
+  </div>
+
+  <ul>
+    @for (task of tasks; track tasks) {
+    <li>
+      <input type="checkbox" />
+      <span [class.completed]="task.completed">{{ task.name }}</span>
+      <button >Remove</button>
+    </li>
+    }
+  </ul>
+</div>
+
+<!-- 
+@defer(when userRegisterForm.controls.name.value ==='Jonka') {
+<app-category />
+} @loading (after 100ms; minimum 5s){
+<img alt="loading..." src="loading.gif" />
+} -->
