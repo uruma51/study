@@ -2,26 +2,43 @@
   @let lists = this.list();
 
   <h1 style="text-align: center">Signal component</h1>
-<!--  <h2>{{ userNameSignal() }}</h2>-->
-<!--  <h2>{{ ifUserIsAdult() }}</h2>-->
+  <!--  <h2>{{ userNameSignal() }}</h2>-->
+  <!--  <h2>{{ ifUserIsAdult() }}</h2>-->
 
   <div class="add-task">
+
+      <h1>{{userName}}</h1>
+
+
     <button (click)="getList()">Get list</button>
-    <input #task type="text" placeholder="Add a new user" />
+    <input #task type="text" placeholder="Add a new user"
+           [(ngModel)]="inputName"/>
+    <h1>{{ inputName() && responseFromChild() }}</h1>
     <button (click)="addNewUser(task.value)">Add user</button>
+    <button (click)="resetList(lists)">Reset List</button>
+    <h1>total elements {{ this.totlaElements }}</h1>
+    <button (click)="filterUsers()">filter</button>
   </div>
-  @defer (when lists){
+  @defer (when lists) {
     <div style="display: flex;flex-direction: column">
       @for (user of list(); track user) {
-        <h3>{{user.firstName}}<button (click)="deleteUser(user)">delete</button></h3>
+        <h3>{{ user.firstName }}
+          <button (click)="deleteUser(user)">delete</button>
+        </h3>
       }
-<h1>total elements {{this.totlaElements}}</h1>
-      <button (click)="filterUsers()">filter</button>
+
     </div>
-  } @placeholder (minimum 100ms){
+  } @placeholder (minimum 100ms) {
     Users list....
-  } @loading (after 100ms; minimum 1s){
+  } @loading (after 100ms; minimum 1s) {
     Please click Get list
   }
+
+
+
+  <app-second-signals
+    (responseFromChild)="userName = $event"
+    [inputNameFromParent]="inputName()"/>
+
 
 </div>

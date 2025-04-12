@@ -1,5 +1,18 @@
-import {Component, computed, effect, inject, OnInit, Signal, signal, WritableSignal} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+
+  inject,
+  model,
+  OnInit,
+  Signal,
+  signal, viewChild,
+  WritableSignal
+} from '@angular/core';
 import {SignalService} from '../signals.service';
+
+import {FormsModule} from '@angular/forms';
+import {SecondSignalsComponent} from '../second-signals/second-signals.component';
 
 interface data {
   errorMessages: string,
@@ -10,17 +23,28 @@ interface data {
 @Component({
   selector: 'app-signal',
   standalone: true,
-  imports: [],
+  imports: [
+
+    FormsModule,
+    SecondSignalsComponent
+  ],
   templateUrl: './signal.component.html',
   styleUrl: './signal.component.less',
   providers: [SignalService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
 export class SignalComponent implements OnInit {
   signalsService: SignalService = inject(SignalService);
   list: WritableSignal<any> = signal(this.signalsService.getUsersListFromService());
-  totlaElements = this.signalsService.totalElements()
+  userName = 'Nika Uruamshvili'
+  totlaElements = this.signalsService.totalElements();
+  inputName: WritableSignal<string> = model('');
+  viewChildSignalComponent:Signal<SecondSignalsComponent | undefined> = viewChild(SecondSignalsComponent,{
+    read:SecondSignalsComponent
+  });
+  responseFromChild:WritableSignal<string> = signal('');
 
   // userNameSignal: WritableSignal<number> = signal(0);
   //
@@ -39,8 +63,11 @@ export class SignalComponent implements OnInit {
 
   usersList: WritableSignal<string[]> = signal([]);
 
+
   ngOnInit(): void {
-    console.log();
+    setTimeout(()=>{
+      this.userName = 'Tornike Shatberashvili'
+    },1000)
   }
 
   getList() {
@@ -54,11 +81,13 @@ export class SignalComponent implements OnInit {
   }
 
   addNewUser(value: string) {
-    setTimeout(() => {
-      if (this.reqForAddUser() === 'userSuccessAdded') {
-        this.updateUsersList(value)
-      }
-    }, 300);
+    console.log(this.viewChildSignalComponent());
+
+    // setTimeout(() => {
+    //   if (this.reqForAddUser() === 'userSuccessAdded') {
+    //     this.updateUsersList(value)
+    //   }
+    // }, 300);
   }
 
   updateUsersList(value: string) {
@@ -81,10 +110,13 @@ export class SignalComponent implements OnInit {
   }
 
   filterUsers() {
-
     this.list.update((oldVal: string[]) => {
-      const updatedList = oldVal.filter((user: any) => user.firstName === 'Lily');
+      const updatedList = oldVal.filter((user: any) => user.firstName === this.inputName());
       return [...updatedList];
     })
   }
+
+  resetList(list:any) {
+    this.list.set(this.signalsService.constantList()?.users)
   }
+}
