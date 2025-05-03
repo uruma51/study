@@ -1,0 +1,35 @@
+.card-body {
+  width: 100%;
+  height: fit-content;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  background-color: #efeded;
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 5px;
+
+    li {
+      list-style: none;
+      margin-bottom: 5px;
+
+      &:last-child {
+        justify-self: center;
+        cursor: pointer;
+        button{
+          padding: 10px;
+          background: #5a9f5a;
+          color: white;
+          font-weight: bold;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+}

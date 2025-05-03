@@ -13,6 +13,7 @@ import {SignalService} from '../signals.service';
 
 import {FormsModule} from '@angular/forms';
 import {SecondSignalsComponent} from '../second-signals/second-signals.component';
+import {ActivatedRoute, Router} from '@angular/router';
 
 interface data {
   errorMessages: string,
@@ -36,15 +37,26 @@ interface data {
 
 
 export class SignalComponent implements OnInit {
+
   signalsService: SignalService = inject(SignalService);
+
+  route: ActivatedRoute = inject(ActivatedRoute);
+
   list: WritableSignal<any> = signal(this.signalsService.getUsersListFromService());
+
   userName = 'Nika Uruamshvili'
+
   totlaElements = this.signalsService.totalElements();
+
   inputName: WritableSignal<string> = model('');
-  viewChildSignalComponent:Signal<SecondSignalsComponent | undefined> = viewChild(SecondSignalsComponent,{
-    read:SecondSignalsComponent
-  });
+
+  // viewChildSignalComponent:Signal<SecondSignalsComponent | undefined> = viewChild(SecondSignalsComponent,{
+  //   read:SecondSignalsComponent
+  // });
+
   responseFromChild:WritableSignal<string> = signal('');
+
+  data = signal(this.route.snapshot.data['data']);
 
   // userNameSignal: WritableSignal<number> = signal(0);
   //
@@ -67,7 +79,8 @@ export class SignalComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(()=>{
       this.userName = 'Tornike Shatberashvili'
-    },1000)
+    },1000);
+    console.log(this.data());
   }
 
   getList() {
@@ -81,7 +94,7 @@ export class SignalComponent implements OnInit {
   }
 
   addNewUser(value: string) {
-    console.log(this.viewChildSignalComponent());
+    // console.log(this.viewChildSignalComponent()?.ifNameIsAdmin());
 
     // setTimeout(() => {
     //   if (this.reqForAddUser() === 'userSuccessAdded') {

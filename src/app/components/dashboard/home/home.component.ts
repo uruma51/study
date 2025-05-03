@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 import { MyService } from './../myService.service';
 import {
@@ -41,7 +41,7 @@ export interface userIntf {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.less',
   providers: [MyService],
@@ -112,8 +112,8 @@ string: any;
       this.tasks.push({ name: value, completed: false });
       value = '';
       console.log(this.tasks);
-    
-    
+
+
   }
 
 
@@ -156,24 +156,24 @@ string: any;
   //     age: '32',
   //   };
 
-    
-    
-  
+
+
+
   //   console.log(this.MyService.addElemnt<string, permissionsModel>('person',person,'id'));
-    
-    
+
+
   //   // console.log(this.MyService.addElemnt<number, userIntf>(1,person2));
-    
-    
+
+
   //   // this.MyService.addElemnt(person2)
-    
+
 
   //   setTimeout(() => {
-      
+
   //     console.log(this.MyService.getElement('name'));
-      
+
   //   }, 700);
-    
+
   // }
 
   // getFormGroup(index: number): FormGroup {

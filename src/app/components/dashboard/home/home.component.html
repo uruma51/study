@@ -28,7 +28,7 @@
         }
       </div>
       <input (click)="addEmailField(name.value)" type="button" value="AddNewTodo">
-      <!-- [disabled]="!userRegisterForm.valid" -->
+       [disabled]="!userRegisterForm.valid" -->
       <!-- <button (click)="show()">
         showForm
       </button>
@@ -38,7 +38,7 @@
   <button (click)="clearFormArray()">clear form</button>
 </div>
 
-<h1>Hello my name is {{MyService.showName()}}</h1> --> 
+<h1>Hello my name is {{MyService.showName()}}</h1> -->
 
 
 
@@ -60,9 +60,11 @@
     </li>
     }
   </ul>
+
+  <button routerLink="/signals">Resolver</button>
 </div>
 
-<!-- 
+<!--
 @defer(when userRegisterForm.controls.name.value ==='Jonka') {
 <app-category />
 } @loading (after 100ms; minimum 5s){

@@ -1,44 +1,61 @@
-<div>
-  @let lists = this.list();
+<!--<div>-->
+<!--  @let lists = this.list();-->
 
-  <h1 style="text-align: center">Signal component</h1>
-  <!--  <h2>{{ userNameSignal() }}</h2>-->
-  <!--  <h2>{{ ifUserIsAdult() }}</h2>-->
+<!--  <h1 style="text-align: center">Signal component</h1>-->
+<!--  &lt;!&ndash;  <h2>{{ userNameSignal() }}</h2>&ndash;&gt;-->
+<!--  &lt;!&ndash;  <h2>{{ ifUserIsAdult() }}</h2>&ndash;&gt;-->
 
-  <div class="add-task">
+<!--  <div class="add-task">-->
 
-      <h1>{{userName}}</h1>
+<!--      <h1>{{userName}}</h1>-->
 
 
-    <button (click)="getList()">Get list</button>
-    <input #task type="text" placeholder="Add a new user"
-           [(ngModel)]="inputName"/>
-    <h1>{{ inputName() && responseFromChild() }}</h1>
-    <button (click)="addNewUser(task.value)">Add user</button>
-    <button (click)="resetList(lists)">Reset List</button>
-    <h1>total elements {{ this.totlaElements }}</h1>
-    <button (click)="filterUsers()">filter</button>
+<!--    <button (click)="getList()">Get list</button>-->
+<!--    <input #task type="text" placeholder="Add a new user"-->
+<!--           [(ngModel)]="inputName"/>-->
+<!--    <h1>{{ inputName() && responseFromChild() }}</h1>-->
+<!--    <button (click)="addNewUser(task.value)">Add user</button>-->
+<!--    <button (click)="resetList(lists)">Reset List</button>-->
+<!--    <h1>total elements {{ this.totlaElements }}</h1>-->
+<!--    <button (click)="filterUsers()">filter</button>-->
+<!--  </div>-->
+<!--  @defer (when data) {-->
+<!--    <div style="display: flex;flex-direction: column">-->
+<!--      @for (user of this.data()?.users; track user) {-->
+<!--        <h3>{{ user.firstName }}-->
+<!--          <button (click)="deleteUser(user)">delete</button>-->
+<!--        </h3>-->
+<!--      }-->
+
+<!--    </div>-->
+<!--  } @placeholder (minimum 100ms) {-->
+<!--    Users list....-->
+<!--  } @loading (after 100ms; minimum 1s) {-->
+<!--    Please click Get list-->
+<!--  }-->
+
+
+<!--  <app-second-signals-->
+<!--    (responseFromChild)="userName = $event"-->
+<!--    [inputNameFromParent]="inputName()"/>-->
+
+
+<!--</div>-->
+
+<div class="cards-list">
+  <div style=" grid-column: span 3;background: #5a9f5a">
+    <app-second-signals/>
   </div>
-  @defer (when lists) {
-    <div style="display: flex;flex-direction: column">
-      @for (user of list(); track user) {
-        <h3>{{ user.firstName }}
-          <button (click)="deleteUser(user)">delete</button>
-        </h3>
-      }
+  <div style=" grid-column:  span 3;background: red">
+    <app-second-signals/>
+  </div>
+  <div style=" grid-column:  span 3;background: blue">
+    <app-second-signals/>
+  </div>
 
-    </div>
-  } @placeholder (minimum 100ms) {
-    Users list....
-  } @loading (after 100ms; minimum 1s) {
-    Please click Get list
-  }
-
-
-
-  <app-second-signals
-    (responseFromChild)="userName = $event"
-    [inputNameFromParent]="inputName()"/>
+  <div style=" grid-column:  span 3;background: #ffae00">
+    <app-second-signals/>
+  </div>
 
 
 </div>

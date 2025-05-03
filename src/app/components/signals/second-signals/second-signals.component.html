@@ -1,12 +1,25 @@
-<div style="background: beige;width: 100%;height: 500px">
-  <h1 style="text-align: center">
-    Second signal
-  </h1>
-  <h3>Name from parent: {{ inputNameFromParent() }}</h3>
-  @if (ifNameIsAdmin()) {
-    <h3>Welcome Admin: {{ inputNameFromParent() }}</h3>
-    <button (click)="response()">Ok</button>
-  }
+<div class="card-body">
+  <div style="background: white; width: 100%; display: flex; justify-content: center; border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+">
+    <img ngSrc="https://img.freepik.com/premium-vector/character-avatar-isolated_729149-194801.jpg?semt=ais_hybrid&w=740"
+         width="80" height="80">
 
+  </div>
 
+  <div class="details">
+    <ul>
+      <li>name:Test</li>
+      <li>name:Test</li>
+      <li>name:Test</li>
+      <li>name:Test</li>
+      <li>name:Test</li>
+      <li>name:Test</li>
+      <li>
+        <button>
+          Details
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>

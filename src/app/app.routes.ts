@@ -1,5 +1,5 @@
-
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
+import {SignalService} from './components/signals/signals.service';
 
 export const routes: Routes = [
 
@@ -16,6 +16,7 @@ export const routes: Routes = [
       import('./components/signals/signal/signal.component').then(
         m => m.SignalComponent // Fix typo: ensure correct export name
       ),
+    resolve: {data: SignalService}
   },
 
   {
@@ -23,5 +24,5 @@ export const routes: Routes = [
     redirectTo: '/dashboard',
     pathMatch: 'full',
   },
-  
+
 ];
