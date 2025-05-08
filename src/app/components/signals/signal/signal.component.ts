@@ -14,6 +14,7 @@ import {SignalService} from '../signals.service';
 import {FormsModule} from '@angular/forms';
 import {SecondSignalsComponent} from '../second-signals/second-signals.component';
 import {ActivatedRoute, Router} from '@angular/router';
+import {NgStyle} from '@angular/common';
 
 interface data {
   errorMessages: string,
@@ -49,6 +50,30 @@ export class SignalComponent implements OnInit {
   totlaElements = this.signalsService.totalElements();
 
   inputName: WritableSignal<string> = model('');
+
+  randomColors:string[] = [
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'purple',
+    'pink',
+    '#5a9f5a',
+    '#2b5a7e',
+    '#010a0e',
+    '#07638a',
+    '#961717',
+    '#d79191',
+    '#f5c8c8',
+    '#280101',
+    '#0dd9ca',
+    '#015d56',
+    '#01415d',
+    'rgb(109,37,159)',
+    'rgb(114,5,98)',
+
+
+  ]
 
   // viewChildSignalComponent:Signal<SecondSignalsComponent | undefined> = viewChild(SecondSignalsComponent,{
   //   read:SecondSignalsComponent

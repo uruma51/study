@@ -1,25 +1,40 @@
-<div class="card-body">
-  <div style="background: white; width: 100%; display: flex; justify-content: center; border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-">
-    <img ngSrc="https://img.freepik.com/premium-vector/character-avatar-isolated_729149-194801.jpg?semt=ais_hybrid&w=740"
-         width="80" height="80">
 
-  </div>
+<div [ngClass]="flipped" class="card card-body" [ngStyle]="{'border-color':borderColor()}">
 
-  <div class="details">
-    <ul>
-      <li>name:Test</li>
-      <li>name:Test</li>
-      <li>name:Test</li>
-      <li>name:Test</li>
-      <li>name:Test</li>
-      <li>name:Test</li>
-      <li>
-        <button>
-          Details
-        </button>
-      </li>
-    </ul>
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="cover" style=" width: 100%; display: flex; justify-content: center; border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+            ">
+
+        <img
+          ngSrc="https://img.freepik.com/premium-vector/character-avatar-isolated_729149-194801.jpg?semt=ais_hybrid&w=740"
+          width="80" height="80">
+
+      </div>
+      <div class="details">
+        <ul>
+          <li>name:Test</li>
+          <li>name:Test</li>
+          <li>name:Test</li>
+          <li>name:Test</li>
+          <li>name:Test</li>
+          <li>name:Test</li>
+          <li>
+            <button (click)="flipped ='flipped'">
+              More Details
+            </button>
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+    <div class="card-back"[ngStyle]="{'backGround-color':borderColor()}">
+      <h1 style="text-align: center;color: white">Content doesn't exists!!!</h1>
+      <button class="error-button" (click)="flipped = ''">
+        Hide More Details
+      </button>
+    </div>
   </div>
 </div>

@@ -18,6 +18,17 @@ export const routes: Routes = [
       ),
     resolve: {data: SignalService}
   },
+  {
+    path: 'react',
+    loadComponent: () =>
+      import('./react/react-host').then(m => m.ReactHostComponent), // Ensure correct export name
+  },
+  {
+    path: 'react/:path',
+    loadComponent: () =>
+      import('./react/react-host').then(m => m.ReactHostComponent), // Ensure correct export name
+  },
+  { path: '**', redirectTo: 'react' },
 
   {
     path: '',

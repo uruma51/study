@@ -1,8 +1,25 @@
 <header class="header">
   <nav>
     <ul>
-      <li routerLink="/dashboard">Home</li>
-      <li routerLink="/signals">Users</li>
+      <li
+        [ngClass]="{'active':activated ==='Home'}"
+        (click)="activated ='Home'"
+        routerLink="/dashboard">
+        Home
+      </li>
+      <li
+        [ngClass]="{'active':activated==='signals'}"
+        (click)="activated ='signals'"
+        routerLink="/signals">
+        Users
+      </li>
+
+      <li
+        [ngClass]="{'active':activated==='react'}"
+        (click)="activated ='react'"
+        routerLink="/react">
+        React
+      </li>
     </ul>
   </nav>
 </header>

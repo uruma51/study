@@ -43,19 +43,23 @@
 <!--</div>-->
 
 <div class="cards-list">
-  <div style=" grid-column: span 3;background: #5a9f5a">
-    <app-second-signals/>
-  </div>
-  <div style=" grid-column:  span 3;background: red">
-    <app-second-signals/>
-  </div>
-  <div style=" grid-column:  span 3;background: blue">
-    <app-second-signals/>
-  </div>
+  @for (element of randomColors; track element; let i = $index) {
 
-  <div style=" grid-column:  span 3;background: #ffae00">
-    <app-second-signals/>
-  </div>
+
+    <div style=" grid-column: span 3;" >
+      <app-second-signals [borderColor]="element"/>
+    </div>
+  }
+  <!--  <div style=" grid-column:  span 3;">-->
+  <!--    <app-second-signals/>-->
+  <!--  </div>-->
+  <!--  <div style=" grid-column:  span 3;">-->
+  <!--    <app-second-signals/>-->
+  <!--  </div>-->
+
+  <!--  <div style=" grid-column:  span 3;">-->
+  <!--    <app-second-signals/>-->
+  <!--  </div>-->
 
 
 </div>
